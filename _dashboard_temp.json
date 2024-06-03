@@ -1,0 +1,1482 @@
+{
+    "dashboardMetadata": {
+        "name": "api-gateway-transofmration-monitor-script",
+        "owner": "D070107",
+        "shared": true,
+        "tags": [
+            "suiteapigw"
+        ],
+        "tilesNameSize": "medium"
+    },
+    "tiles": [
+        {
+            "name": "APIGW",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 38,
+                "left": 190,
+                "width": 190,
+                "height": 38
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false
+        },
+        {
+            "name": "SPM GW",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 38,
+                "left": 760,
+                "width": 190,
+                "height": 38
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false
+        },
+        {
+            "name": "apigw-response-time",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 76,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Response time",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):median",
+                    "rate": "NONE",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):percentile(90.0)",
+                    "rate": "NONE",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):percentile(99.0)",
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "BLUE",
+                            "alias": "Response time (p50)"
+                        },
+                        "seriesOverrides": []
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "color": "BLUE",
+                            "alias": "Response time (p90)"
+                        },
+                        "seriesOverrides": []
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "color": "BLUE",
+                            "alias": "Response time (p99)"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "metricExpressions": [
+                "resolution=null&(builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):median):limit(100):names,(builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):percentile(90.0)):limit(100):names,(builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):percentile(99.0)):limit(100):names"
+            ]
+        },
+        {
+            "name": "spm-platform-gateway-response-time",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 76,
+                "left": 570,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Response time",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):median",
+                    "rate": "NONE",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):percentile(90.0)",
+                    "rate": "NONE",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):percentile(99.0)",
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "BLUE",
+                            "alias": "Response time (p50)"
+                        },
+                        "seriesOverrides": []
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "color": "BLUE",
+                            "alias": "Response time (p90)"
+                        },
+                        "seriesOverrides": []
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "color": "BLUE",
+                            "alias": "Response time (p99)"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "metricExpressions": [
+                "resolution=null&(builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):median):limit(100):names,(builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):percentile(90.0)):limit(100):names,(builtin:service.response.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):percentile(99.0)):limit(100):names"
+            ]
+        },
+        {
+            "name": "apigw-failed-request",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 456,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Failed requests",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.errors.server.rate:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\")",
+                    "rate": "NONE",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.errors.server.count:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\")",
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "RED",
+                            "seriesType": "LINE",
+                            "alias": "Failure rate"
+                        },
+                        "seriesOverrides": []
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "color": "RED",
+                            "seriesType": "COLUMN",
+                            "alias": "Failures"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "visible": true,
+                            "min": "0",
+                            "max": "100.000001",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        },
+                        {
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "RIGHT",
+                            "queryIds": [
+                                "B"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "metricExpressions": [
+                "resolution=null&(builtin:service.errors.server.rate:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\")):limit(100):names,(builtin:service.errors.server.count:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\")):limit(100):names"
+            ]
+        },
+        {
+            "name": "spm-platform-gateway-failed-requests",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 456,
+                "left": 570,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Failed requests",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.errors.server.rate:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\")",
+                    "rate": "NONE",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.errors.server.count:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\")",
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "RED",
+                            "seriesType": "LINE",
+                            "alias": "Failure rate"
+                        },
+                        "seriesOverrides": []
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "color": "RED",
+                            "seriesType": "COLUMN",
+                            "alias": "Failures"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "visible": true,
+                            "min": "0",
+                            "max": "100.000001",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        },
+                        {
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "RIGHT",
+                            "queryIds": [
+                                "B"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "metricExpressions": [
+                "resolution=null&(builtin:service.errors.server.rate:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\")):limit(100):names,(builtin:service.errors.server.count:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\")):limit(100):names"
+            ]
+        },
+        {
+            "name": "apigw-number-request-per-min",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 836,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Throughput",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "builtin:service.requestCount.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):sum:rate(1m):setUnit(PerMinute)",
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "BLUE",
+                            "seriesType": "COLUMN",
+                            "alias": "Throughput"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "metricExpressions": [
+                "resolution=null&(builtin:service.requestCount.server:filter(eq(\"dt.entity.service\",SERVICE-14D6867CAABC273D)):splitBy(\"dt.entity.service\"):sum:rate(1m):setUnit(PerMinute)):limit(100):names"
+            ]
+        },
+        {
+            "name": "spm-platform-gateway-request-per-min",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 836,
+                "left": 570,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Throughput",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AUTO",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.service"
+                    ],
+                    "metricSelector": "builtin:service.requestCount.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):sum:rate(1m):setUnit(PerMinute)",
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "BLUE",
+                            "seriesType": "COLUMN",
+                            "alias": "Throughput"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(builtin:service.requestCount.server:filter(eq(\"dt.entity.service\",SERVICE-FA50B05AD19C6FBD)):splitBy(\"dt.entity.service\"):sum:rate(1m):setUnit(PerMinute)):limit(100):names"
+            ]
+        },
+        {
+            "name": "apigw-incoming-number-requests",
+            "nameSize": "large",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 1216,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Data explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigwoutgoingrequests",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "sortByDimension": "",
+                    "filterBy": {
+                        "nestedFilters": [],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {},
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "DEFAULT"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE"
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigwoutgoingrequests:splitBy(Dimension):avg:sort(value(avg,descending)):limit(20)):limit(100):names"
+            ]
+        },
+        {
+            "name": "spmgw-incoming-number-requests",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 1216,
+                "left": 570,
+                "width": 570,
+                "height": 380
+            },
+            "tileFilter": {},
+            "isAutoRefreshDisabled": false,
+            "customName": "Data explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.spmgwincomingrequests",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "sortByDimension": "",
+                    "filterBy": {
+                        "nestedFilters": [],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "rate": "NONE",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {},
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "color": "DEFAULT"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "heatmapSettings": {
+                    "yAxis": "VALUE",
+                    "showLabels": false
+                },
+                "singleValueSettings": {
+                    "showTrend": true,
+                    "showSparkLine": true,
+                    "linkTileColorToThreshold": true
+                },
+                "thresholds": [
+                    {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ],
+                        "visible": true
+                    }
+                ],
+                "tableSettings": {
+                    "hiddenColumns": []
+                },
+                "graphChartSettings": {
+                    "connectNulls": false
+                },
+                "honeycombSettings": {
+                    "showHive": true,
+                    "showLegend": true,
+                    "showLabels": false
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.spmgwincomingrequests:splitBy(Dimension):avg:sort(value(avg,descending)):limit(20)):limit(100):names"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-suite-clients-graphql.sc",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-suite-clients-graphql.sc",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 1596,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "suite-clients-graphql.sc",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"suite-clients-graphql.sc\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-variant-management.spm.svc.cluster.local",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-variant-management.spm.svc.cluster.local",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 1976,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "variant-management.spm.svc.cluster.local",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"variant-management.spm.svc.cluster.local\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-insights-central-api-service",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-insights-central-api-service",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 2356,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "insights-central-api-service.suite-insights-central",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"insights-central-api-service.suite-insights-central\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-jm-metrics.jm.svc.cluster.local",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-jm-metrics.jm.svc.cluster.local",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 2736,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "jm-metrics.jm.svc.cluster.local",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"jm-metrics.jm.svc.cluster.local\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-spg-report-api.swa.svc.cluster.local",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-spg-report-api.swa.svc.cluster.local",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 3116,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "spg-report-api.swa.svc.cluster.local",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"spg-report-api.swa.svc.cluster.local\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-spi-etl-ingestion.spi.svc.cluster.local",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-spi-etl-ingestion.spi.svc.cluster.local",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 3496,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "spi-etl-ingestion.spi.svc.cluster.local",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"spi-etl-ingestion.spi.svc.cluster.local\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        },
+        {
+            "tileType": "DATA_EXPLORER",
+            "name": "apigw-out-swa.swa.svc.cluster.local",
+            "configured": true,
+            "tileFilter": {},
+            "customName": "apigw-out-swa.swa.svc.cluster.local",
+            "isAutoRefreshDisabled": false,
+            "bounds": {
+                "top": 3876,
+                "left": 0,
+                "width": 570,
+                "height": 380
+            },
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "calc:service.apigw_out_all_script",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "Dimension"
+                    ],
+                    "sortBy": "DESC",
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "Dimension",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "swa.swa.svc.cluster.local",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "limit": 20,
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "hideLegend": false
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "unitTransform": "Kilo",
+                        "valueFormat": "none",
+                        "properties": {
+                            "color": "DEFAULT",
+                            "seriesType": "LINE"
+                        },
+                        "seriesOverrides": []
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "displayName": "",
+                        "visible": true
+                    },
+                    "yAxes": [
+                        {
+                            "displayName": "",
+                            "visible": true,
+                            "min": "AUTO",
+                            "max": "AUTO",
+                            "position": "LEFT",
+                            "queryIds": [
+                                "A"
+                            ],
+                            "defaultAxis": true
+                        }
+                    ]
+                },
+                "graphChartSettings": {
+                    "connectNulls": true
+                }
+            },
+            "queriesSettings": {
+                "resolution": ""
+            },
+            "metricExpressions": [
+                "resolution=null&(calc:service.apigw_out_service_all:filter(and(or(eq(Dimension,\"swa.swa.svc.cluster.local\")))):splitBy(Dimension):sort(value(auto,descending)):limit(20)"
+            ]
+        }
+    ]
+}

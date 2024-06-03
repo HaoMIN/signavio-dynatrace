@@ -1,0 +1,29 @@
+{
+    "conditions": [
+      {
+        "attribute": "PROCESS_GROUP_NAME",
+        "comparisonInfo": {
+          "caseSensitive": false,
+          "comparison": "EQUALS",
+          "negate": false,
+          "type": "FAST_STRING",
+          "value": "envoy bpi-api-gw-app-*"
+        }
+      }
+    ],
+    "dimensionDefinition": {
+      "dimension": "{URL:Host}",
+      "name": "Dimension",
+      "topX": 10,
+      "topXAggregation": "SINGLE_VALUE",
+      "topXDirection": "DESCENDING"
+    },
+    "enabled": true,
+    "entityId": "SERVICE-14D6867CAABC273D",
+    "metricDefinition": {
+      "metric": "REQUEST_COUNT"
+    },
+    "name": "apigw_out_all_script",
+    "tsmMetricKey": "calc:service.apigw_out_all_script",
+    "unit": "COUNT"
+  }
